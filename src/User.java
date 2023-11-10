@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.lang.StringTemplate.STR;
@@ -59,11 +60,16 @@ public class User {
         this.product = products;
     }
 
+    User[] user = new User[10];
 
-    public void register(User[] user) {
+
+    int count = 0;
+
+    public void register() {
+
         Scanner sc = new Scanner(System.in);
 
-        int count = 0;
+        count = 0;
 
         User user1 = new User();
         System.out.print("First name: ");
@@ -78,16 +84,18 @@ public class User {
         System.out.print("Password: ");
         user1.setPassword(sc.nextLine());
 
-        System.out.print("Kattaluuu iygiliktuuu boldu");
+        System.out.print("Kattaluuu iygiliktuuu boldu ");
 
 
         user[count] = user1;
         count++;
+//        System.out.println(Arrays.toString(user));
+
         System.out.println(user[count -1].firstName);
 
     }
 
-    public void login(User[] user){
+    public void login(){
 
         Scanner sc = new Scanner(System.in);
         Product product = new Product();
@@ -98,11 +106,11 @@ public class User {
         System.out.print("Password: ");
         String password = sc.nextLine();
 
-        for (User us: user){
-            if (us != null && us.getEmail().equals(login) && us.getPassword().equals(password)){
+        for (int i = 0; i<count; i++){
+            if (user[i].getEmail().equals(login) && user[i].getPassword().equals(password)){
                 System.out.println(STR."""
                                         Welcome
-                                  User: \{us.getFirstName()} \{ us.getLastName()}
+                                  User: \{user[i].getFirstName()} \{ user[i].getLastName()}
                                     """);
                 System.out.println("""
                                     0. Logout

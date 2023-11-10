@@ -6,11 +6,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         User[] users = new User[10];
-        Product[] products = new Product[80];
+//        Product[] products = new Product[80];
 
         User user1 = new User();
         Product product = new Product();
-
 
         while (true) {
             System.out.println("""
@@ -20,20 +19,16 @@ public class Main {
                     """);
             System.out.print("Komnada tndanyz: ");
 
-            switch (sc.nextLine()){
-                case "1":{
-                    user1.register(users);
-                    System.out.println(Arrays.toString(users));
-
+            switch (sc.nextLine()) {
+                case "1": {
+                    user1.register();
                     break;
                 }
-                case "2":{
-                    while (true){
-                    user1.login(users);
+                case "2": {
+                    user1.login();
                     break;
-                    }
                 }
-                case "3":{
+                case "3": {
                     System.out.println();
                 }
             }
