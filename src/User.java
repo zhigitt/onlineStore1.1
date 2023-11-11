@@ -7,10 +7,11 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private  String password;
+    private String password;
     private Product product;
 
-    public User(){}
+    public User() {
+    }
 
     public User(String firstName, String lastName, String email, String password, Product products) {
         this.firstName = firstName;
@@ -60,42 +61,48 @@ public class User {
         this.product = products;
     }
 
+
     User[] user = new User[10];
-
-
     int count = 0;
 
     public void register() {
+            User user1 = new User();
 
-        Scanner sc = new Scanner(System.in);
+            Scanner sc = new Scanner(System.in);
 
-        count = 0;
+            System.out.print("First name: ");
+            user1.setFirstName(sc.nextLine());
 
-        User user1 = new User();
-        System.out.print("First name: ");
-        user1.setFirstName(sc.nextLine());
+            System.out.print("Last name: ");
+            user1.setLastName(sc.nextLine());
 
-        System.out.print("Last name: ");
-        user1.setLastName(sc.nextLine());
+            System.out.print("E-mail: ");
+            user1.setEmail(sc.nextLine());
 
-        System.out.print("E-mail: ");
-        user1.setEmail(sc.nextLine());
+            System.out.print("Password: ");
+            user1.setPassword(sc.nextLine());
 
-        System.out.print("Password: ");
-        user1.setPassword(sc.nextLine());
-
-        System.out.print("Kattaluuu iygiliktuuu boldu ");
+            System.out.print("Kattaluuu iygiliktuuu boldu ");
 
 
-        user[count] = user1;
-        count++;
-//        System.out.println(Arrays.toString(user));
-
-        System.out.println(user[count -1].firstName);
-
+            user[count] = user1;
+            count++;
+            System.out.println(" ");
     }
 
-    public void login(){
+    public void displayUsers() {
+        System.out.println("Все зарегистрированные пользователи:");
+        for (int i = 0; i < count; i++) {
+//            System.out.println("Имя: " + user[i].getFirstName());
+//            System.out.println("Фамилия: " + user[i].getLastName());
+//            System.out.println("E-mail: " + user[i].getEmail());
+//            System.out.println(); // Пустая строка для разделения информации о пользователях
+
+            System.out.println(user);
+        }
+    }
+
+    public void login() {
 
         Scanner sc = new Scanner(System.in);
         Product product = new Product();
@@ -106,38 +113,18 @@ public class User {
         System.out.print("Password: ");
         String password = sc.nextLine();
 
-        for (int i = 0; i<count; i++){
-            if (user[i].getEmail().equals(login) && user[i].getPassword().equals(password)){
-                System.out.println(STR."""
+        for (int i = 0; i < count; i++) {
+            if (user[i].getEmail().equals(login) && user[i].getPassword().equals(password)) {
+                System.out.println(STR. """
                                         Welcome
-                                  User: \{user[i].getFirstName()} \{ user[i].getLastName()}
-                                    """);
-                System.out.println("""
-                                    0. Logout
-                                    1. Add new Product
-                                    2. Get all Product
-                                    3. Get all Book
-                                    4. Get all Electroics
-                                    """);
+                                  User: \{ user[i].getFirstName() } \{ user[i].getLastName() }
+                                    """ );
 
                 System.out.println("Komanda tandoo: ");
-
-                switch (sc.nextLine()){
-                    case "0":{
-                        break;
-                    }
-                    case "1":{
-                        product.addProduct(product);
-                    }
-                    case "2":{
-
-                    }
-
-                }
             }
         }
-
     }
+
 
     @Override
     public String toString() {
@@ -150,3 +137,4 @@ public class User {
                 '}';
     }
 }
+

@@ -49,6 +49,9 @@ public class Product {
         this.createdAt = createdAt;
     }
 
+    Product[] products = new Product[80];
+    int countProduct = 0;
+
     public  void addProduct(Product product){
         Scanner sc = new Scanner(System.in);
 
@@ -66,8 +69,20 @@ public class Product {
         System.out.println("Craeted at: year ");
         product1.setCreatedAt(sc.nextInt());
 
+        products[countProduct] = product1;
+        countProduct++;
+    }
 
 
+    public void getAllProduct(){
+        for (int i = 0; i < countProduct; i++) {
+            System.out.println(STR."""
+                    Product name: \{products[i].getName()}
+                    Descraption: \{products[i].getDescription()}
+                    Price: \{products[i].getPrice()}
+                    Crated at year: \{products[i].getCreatedAt()}
+                    """);
+        }
     }
 
     @Override
