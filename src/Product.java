@@ -1,3 +1,4 @@
+import java.sql.SQLSyntaxErrorException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -49,39 +50,34 @@ public class Product {
         this.createdAt = createdAt;
     }
 
-    Product[] products = new Product[80];
+//    Product[] products = {new Electronics(), new Book()};
     int countProduct = 0;
 
-    public  void addProduct(Product product){
+    public  void addProduct(){
         Scanner sc = new Scanner(System.in);
+        System.out.println(STR."""
+                1. Book
+                2. Electrnics
+                """);
 
-        Product product1 = new Product();
-
-        System.out.println("Prduct name: ");
-        product1.setName(sc.nextLine());
-
-        System.out.println("Descraption: ");
-        product1.setDescription(sc.nextLine());
-
-        System.out.println("Price: ");
-        product1.setPrice(sc.nextInt());
-
-        System.out.println("Craeted at: year ");
-        product1.setCreatedAt(sc.nextInt());
-
-        products[countProduct] = product1;
-        countProduct++;
+        switch (sc.nextLine()){
+            case "1":{
+                Book book = new Book();
+                book.addBook();
+                break;
+            }
+            case "2":{
+                Electronics electronic = new Electronics();
+                electronic.addElectronics();
+                break;
+            }
+        }
     }
 
 
     public void getAllProduct(){
         for (int i = 0; i < countProduct; i++) {
-            System.out.println(STR."""
-                    Product name: \{products[i].getName()}
-                    Descraption: \{products[i].getDescription()}
-                    Price: \{products[i].getPrice()}
-                    Crated at year: \{products[i].getCreatedAt()}
-                    """);
+
         }
     }
 
