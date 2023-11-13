@@ -1,21 +1,25 @@
-import java.sql.SQLSyntaxErrorException;
-import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Scanner;
 
-import static java.time.LocalDate.*;
-
 public class Product {
-    private  String name;
-    private  String description;
-    private  int price;
+    private String name;
+    private String description;
+    private int price;
     private int createdAt;
+    protected int countProduct = 0;
 
-    public Product(){}
-    public Product(String name, String description, int price, int createdAt) {
+    protected Product[] products = new Product[30];
+
+    public Product() {
+    }
+
+    public Product(String name, String description, int price, int createdAt, int countProduct, Product[] products) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.createdAt = createdAt;
+        this.countProduct = countProduct;
+        this.products = products;
     }
 
     public String getName() {
@@ -50,35 +54,62 @@ public class Product {
         this.createdAt = createdAt;
     }
 
-//    Product[] products = {new Electronics(), new Book()};
-    int countProduct = 0;
+    public int getCountProduct() {
+        return countProduct;
+    }
 
-    public  void addProduct(){
+    public void setCountProduct(int countProduct) {
+        this.countProduct = countProduct;
+    }
+
+    public Product[] getProducts() {
+        return products;
+    }
+
+    public void setProducts(Product[] products) {
+        this.products = products;
+    }
+
+
+    public void addProduct() {
+        Book book = new Book();
+        Electronics electronic = new Electronics();
+
         Scanner sc = new Scanner(System.in);
         System.out.println(STR."""
                 1. Book
                 2. Electrnics
                 """);
 
-        switch (sc.nextLine()){
-            case "1":{
-                Book book = new Book();
+        switch (sc.nextLine()) {
+            case "1": {
                 book.addBook();
+                products[countProduct] = book;
+                countProduct++;
                 break;
             }
-            case "2":{
-                Electronics electronic = new Electronics();
+            case "2": {
                 electronic.addElectronics();
+                products[countProduct] = electronic;
+                countProduct++;
                 break;
             }
         }
     }
 
 
-    public void getAllProduct(){
+    public void getAllProduct() {
         for (int i = 0; i < countProduct; i++) {
-
+            System.out.println(products[i].toString());
         }
+    }
+
+    public Product[] getAll(){
+      return  Arrays.copyOf(products, countProduct);
+    }
+
+    public Product[] getAll1(){
+        return Arrays.copyOf(products, countProduct);
     }
 
     @Override

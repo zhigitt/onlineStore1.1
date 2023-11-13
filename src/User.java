@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.lang.StringTemplate.STR;
@@ -90,22 +89,10 @@ public class User {
             System.out.println(" ");
     }
 
-    public void displayUsers() {
-        System.out.println("Все зарегистрированные пользователи:");
-        for (int i = 0; i < count; i++) {
-//            System.out.println("Имя: " + user[i].getFirstName());
-//            System.out.println("Фамилия: " + user[i].getLastName());
-//            System.out.println("E-mail: " + user[i].getEmail());
-//            System.out.println(); // Пустая строка для разделения информации о пользователях
-
-            System.out.println(user);
-        }
-    }
 
     public void login() {
 
         Scanner sc = new Scanner(System.in);
-        Product product = new Product();
 
         System.out.print("Login: ");
         String login = sc.nextLine();
@@ -117,10 +104,9 @@ public class User {
             if (user[i].getEmail().equals(login) && user[i].getPassword().equals(password)) {
                 System.out.println(STR. """
                                         Welcome
-                                  User: \{ user[i].getFirstName() } \{ user[i].getLastName() }
+                                  👤User: \{ user[i].getFirstName() } \{ user[i].getLastName() }
                                     """ );
 
-                System.out.println("Komanda tandoo: ");
             }
         }
     }

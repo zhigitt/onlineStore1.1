@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -12,9 +11,7 @@ public class Main {
 
         Book book = new Book();
 
-        Electronics electronics = new Electronics();
-
-//        Electronics electronic = new Electronics();
+        Electronics electronic = new Electronics();
 
 
         boolean found = false;
@@ -65,15 +62,19 @@ public class Main {
                     }
                     case "1": {
                         product.addProduct();
+                        break;
                     }
                     case "2": {
                         product.getAllProduct();
+                        break;
                     }
                     case "3": {
-                        book.getAllBook();
+                        Book.getAllBook(product.getAll());
+                        break;
                     }
                     case "4": {
-                        electronics.getAllElectrnics();
+                        Electronics.getAllElectrnics(product.getAll());
+                        break;
                     }
                     default: {
                         System.out.println("Komanda tuura emes berildi");
